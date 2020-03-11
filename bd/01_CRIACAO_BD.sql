@@ -1,0 +1,36 @@
+-- DDL
+
+CREATE DATABASE Senatur_TARDE;
+
+USE Senatur_TARDE;
+
+CREATE TABLE Pacotes(
+	IdPacote	INT PRIMARY KEY IDENTITY
+	,NomePacote		VARCHAR(255) NOT NULL
+	,Descricao	TEXT	
+	,DataIda	DATE	
+	,DataVolta	DATE 
+	,Valor		DECIMAL
+	,Ativo		BIT
+	,NomeCidade		VARCHAR(255) NOT NULL
+	
+);
+GO
+
+CREATE TABLE TiposUsuario(
+	IdTipoUsuario	INT PRIMARY KEY IDENTITY
+	,Titulo			VARCHAR(255) UNIQUE NOT NULL
+);
+GO
+
+
+-- Cria a tabela Usuarios
+CREATE TABLE Usuarios(
+	IdUsuario		INT PRIMARY KEY IDENTITY
+	,Email			VARCHAR(255) UNIQUE NOT NULL
+	,Senha			VARCHAR(255) NOT NULL
+	,IdTipoUsuario	INT FOREIGN KEY REFERENCES TiposUsuario(IdTipoUsuario)
+);
+GO
+
+dROP TABLE PACOTES;
